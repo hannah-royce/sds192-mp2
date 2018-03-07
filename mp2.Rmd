@@ -1,6 +1,10 @@
 ---
 title: "Mini-Project 2"
+<<<<<<< HEAD
 author: "Hannah Davis, Greta Mundt, Sonia Garfinkle"
+=======
+author: "Hannah Davis"
+>>>>>>> eec5d050084212bd13f2289e0069e48f92a948c2
 date: "March 7, 2018"
 output: html_document
 ---
@@ -18,4 +22,9 @@ load("contributions.rda")
 ```
 ```{r}
 library(tidyverse)
+<<<<<<< HEAD
 ```
+=======
+```
+
+>>>>>>> eec5d050084212bd13f2289e0069e48f92a948c2
