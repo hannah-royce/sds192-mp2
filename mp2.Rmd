@@ -1,7 +1,7 @@
 ---
 title: "Mini-Project 2"
 <<<<<<< HEAD
-author: "Hannah Davis, Greta Mundt, Sonia Garfinkle"
+author: "Hannah Davis, Greta Mundt, Sonia Garfinkel"
 =======
 author: "Hannah Davis"
 >>>>>>> eec5d050084212bd13f2289e0069e48f92a948c2
@@ -25,8 +25,12 @@ load("contributions.rda")
 ```{r}
 library(tidyverse)
 <<<<<<< HEAD
+<<<<<<< HEAD
 ```
 =======
+=======
+library(nycflights13)
+>>>>>>> 4b98d9f06730c2b12255dc49c2de736ad13b64f9
 ```
 
 >>>>>>> eec5d050084212bd13f2289e0069e48f92a948c2
