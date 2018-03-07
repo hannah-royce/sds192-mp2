@@ -1,6 +1,6 @@
 ---
 title: "Mini-Project 2"
-author: "Hannah Davis"
+author: "Hannah Davis, Sonia Garfinkel, Greta Mundt"
 date: "March 7, 2018"
 output: html_document
 ---
