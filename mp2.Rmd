@@ -15,12 +15,18 @@ load("house_elections.rda")
 load("candidates.rda")
 load("committees.rda")
 load("contributions.rda")
+
+
 ```
 ```{r}
 library(tidyverse)
+<<<<<<< HEAD
 glimpse("house_elections.rda")
 library(babynames)
 
 head(babynames)
+=======
+library(nycflights13)
+>>>>>>> 4b98d9f06730c2b12255dc49c2de736ad13b64f9
 ```
 
