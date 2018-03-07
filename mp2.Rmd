@@ -1,8 +1,9 @@
 ---
 title: "Mini-Project 2"
-author: "Hannah Davis"
-date: "March 7, 2018"
-output: html_document
+<<<<<<< HEAD
+author: "Hannah Davis, Greta Mundt, Sonia Garfinkel!"
+=======
+
 ---
 
 
@@ -21,12 +22,19 @@ load("contributions.rda")
 ```{r}
 library(tidyverse)
 <<<<<<< HEAD
+<<<<<<< HEAD
 glimpse("house_elections.rda")
 library(babynames)
 
 head(babynames)
 =======
+<<<<<<< HEAD
+```
+=======
+>>>>>>> 015280edd6ec576a52ed7a08becb49b6de2fbf0c
+=======
 library(nycflights13)
 >>>>>>> 4b98d9f06730c2b12255dc49c2de736ad13b64f9
 ```
 
+>>>>>>> eec5d050084212bd13f2289e0069e48f92a948c2
