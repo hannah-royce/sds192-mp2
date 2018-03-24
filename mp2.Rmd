@@ -1,42 +1,47 @@
----
-title: "Mini-Project 2"
-author: "Hannah Davis, Sonia Garfinkel, Greta Mundt"
-date: "March 7, 2018"
-output: html_document
+title: "Election Results"
+author: Greta Mundt, Sonia Garfinkel, Hannah Davis
+date: "March 24 2018"
+output: 
+  html_document:
+    code_folding: show
 
 
-## Loading the data
+```{r results='hide', message = FALSE, warning=FALSE}
+library(tidyverse)
+```
 
-This project is so interesting and relevant to my life!
+```{r}
+territories <- individuals %>% 
+  filter(state %in% c("AS", "FM", "GU", "MP", "PR", "VI"))
+```
 
-```{r, include=FALSE}
-load("house_elections.rda")
-load("candidates.rda")
-load("committees.rda")
-load("contributions.rda")
+```{r}
+territories_new <- territories %>% left_join(committees, by = "cmte_id")
 
-
+glimpse(territories)
 ```
 ```{r}
-library(tidyverse)
-<<<<<<< HEAD
-<<<<<<< HEAD
-glimpse("house_elections.rda")
-library(babynames)
+cand_house_elections <- house_elections %>% 
+  rename(cand_id = fec_id)
 
-head(babynames)
-=======
-<<<<<<< HEAD
-```
-=======
->>>>>>> 015280edd6ec576a52ed7a08becb49b6de2fbf0c
-=======
-library(nycflights13)
->>>>>>> 4b98d9f06730c2b12255dc49c2de736ad13b64f9
+territories_full_info <- territories_new %>% left_join(cand_house_elections, by = "cand_id")
 ```
 
->>>>>>> eec5d050084212bd13f2289e0069e48f92a948c2
+```{r}
+snipped_territories <- territories_full_info %>% select("state.x", "transaction_amt", "cmte_party_affiliation", "ge_winner") %>% na.omit(snipped_territories)
+```
 
-*******************************************************************************************************************
+```{r}
+
+ggplot(snipped_territories, aes(x = cmte_party_affiliation, y = transaction_amt, color = ge_winner)) +
+  geom_jitter() +
+  facet_wrap(~state.x, ncol = 3) +
+  geom_point(shape = 22, alpha = .1) +
+  labs(x = "Committee Party Affiliation", y = "Donation Amount", title = "Election Results Based on Territorial Donations", subtitle = "Impact of Donations from Territorial Sources on Candidate Success in Federal Elections") 
+  
+
+```
+
+
 
 
