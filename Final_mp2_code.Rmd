@@ -8,6 +8,8 @@ output:
 
 ```{r results='hide', message = FALSE, warning=FALSE}
 library(tidyverse)
+
+load(committees.rda)
 ```
 
 ```{r}
@@ -33,11 +35,12 @@ snipped_territories <- territories_full_info %>% select("state.x", "transaction_
 
 ```{r}
 
-ggplot(snipped_territories, aes(x = cmte_party_affiliation, y = transaction_amt, col = ge_winner)) +
+ggplot(snipped_territories, aes(x = cmte_party_affiliation, y = transaction_amt, color = ge_winner)) +
   geom_jitter() +
   facet_wrap(~state.x, ncol = 3) +
   geom_point(shape = 23, alpha = .1) +
-  labs(x = "Committee Party Affiliation", y = "Donation Amount", ggtitle = "Election Results Based on Territorial Donations")
+  labs(x = "Committee Party Affiliation", y = "Donation Amount", title = "Election Results Based on Territorial Donations", subtitle = "Impact of Donations from Territorial Sources on Candidate Success in Federal Elections") 
+  
 
 ```
 
