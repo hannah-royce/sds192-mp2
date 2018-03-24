@@ -1,10 +1,8 @@
 ---
 title: "Mini-Project 2"
-<<<<<<< HEAD
-author: "Hannah Davis, Greta Mundt, Sonia Garfinkel!"
-=======
-
----
+author: "Hannah Davis, Sonia Garfinkel, Greta Mundt"
+date: "March 7, 2018"
+output: html_document
 
 
 ## Loading the data
@@ -38,3 +36,7 @@ library(nycflights13)
 ```
 
 >>>>>>> eec5d050084212bd13f2289e0069e48f92a948c2
+
+*******************************************************************************************************************
+
+

@@ -1,0 +1,46 @@
+title: "Election Results"
+author: Greta Mundt, Sonia Garfinkel, Hannah Davis
+date: "March 24 2018"
+output: 
+  html_document:
+    code_folding: show
+
+
+```{r results='hide', message = FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+```{r}
+territories <- individuals %>% 
+  filter(state %in% c("AS", "FM", "GU", "MP", "PR", "VI"))
+```
+
+```{r}
+territories_new <- territories %>% left_join(committees, by = "cmte_id")
+
+glimpse(territories)
+```
+```{r}
+cand_house_elections <- house_elections %>% 
+  rename(cand_id = fec_id)
+
+territories_full_info <- territories_new %>% left_join(cand_house_elections, by = "cand_id")
+```
+
+```{r}
+snipped_territories <- territories_full_info %>% select("state.x", "transaction_amt", "cmte_party_affiliation", "ge_winner") %>% na.omit(snipped_territories)
+```
+
+```{r}
+
+ggplot(snipped_territories, aes(x = cmte_party_affiliation, y = transaction_amt, col = ge_winner)) +
+  geom_jitter() +
+  facet_wrap(~state.x, ncol = 3) +
+  geom_point(shape = 23, alpha = .1) +
+  labs(x = "Committee Party Affiliation", y = "Donation Amount", ggtitle = "Election Results Based on Territorial Donations")
+
+```
+
+
+
+
