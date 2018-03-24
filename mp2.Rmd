@@ -2,37 +2,65 @@
 title: "Election Results"
 author: Greta Mundt, Sonia Garfinkel, Hannah Davis
 date: "March 24 2018"
+<<<<<<< HEAD
 output: oilabs::lab_report 
 --- 
+=======
+output: 
+  html_document:
+    code_folding: hide
+---
+
+American territories play a unique role in federal elections in that they do not have voting representatives within congress, yet still elect representatives. We were interested to see how this unique political climate might affect the financial aspect of territorial federal elections on an individual level, in the form of monetary donations. 
+
+In this project we have taken data from the individuals dataset from the FEC website and used a left join with data from the committees dataset. From the individuals dataset we filtered to only show donations made by people who live in territories of the United States, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, and the Virgin Islands. We did not include DC because DC had astronomically higher amounts of money donated by residents than from the other territories, and it severely skewed our data. We joined this territory data, with the committees data, which shows political committees (Democratic Committee, Democratic Farm and Labor Party, Republican Committee, and unknown committees) and which candidate for federal office the committee backs. The candidate is from the same party affiliation that the committee is affiliated with. The data also shows if the candidate won or lost the election. Our final curated dataset had individuals from the territories who have donated to political committees, and if those candidates backed by the committees won or lost the election.   
+
+What we can learn from this data is that regardless of party, most individuals living in territories are making donations under $5,000 without significant impact on the outcome of the election.
+
+We found looking at territory data interesting, instead of states inside United States proper because of the historical and current context of lack of territorial representation in the US Federal Government. We were also interested in seeing, because of this context, what individual people’s political party affiliation in territories would be. In the federal election monetary donation process, candidates are backed by committee to elect them, which have a party affiliation. Individual people can donate money to these committees, with the hope that the committees candidate will win the election. We found that party affiliation in the territories, based on which committees individual people donated to, was fairly evenly distributed between the Democratic Committee and the the Republican Committee, with fewer donations going to the Independent Committee. 
+>>>>>>> 2e8208558b38e3c9a406a79cbe79f28d5c322e6b
 
 ```{r results='hide', message = FALSE, warning=FALSE}
 library(tidyverse)
 load("individuals.rda")
 load("committees.rda")
 load("house_elections.rda")
+<<<<<<< HEAD
 library("rmarkdown")
 library(oilabs)
+=======
+>>>>>>> 2e8208558b38e3c9a406a79cbe79f28d5c322e6b
 ```
 
 ```{r}
 territories <- individuals %>% 
   filter(state %in% c("AS", "FM", "GU", "MP", "PR", "VI"))
+
+#Here we are limiting the states that were in the Individuals data set to strictly American territories that had individuals that gave donations to federal elections. 
 ```
+
 
 ```{r}
 territories_new <- territories %>% left_join(committees, by = "cmte_id")
 
-glimpse(territories)
+ #We joined territories to committees by committee id in order to gain committee party affiliation. 
+
 ```
 ```{r}
 cand_house_elections <- house_elections %>% 
   rename(cand_id = fec_id)
 
+#We found that house elections had the same information as our territories set, but listed underneath a different variable name. In order to address this, we renamed the column to the same name as our territories set. 
+
 territories_full_info <- territories_new %>% left_join(cand_house_elections, by = "cand_id")
+
+#We joined these two sets with the intention of having the most comprehensive table possible for our given data parameters
 ```
 
 ```{r}
 snipped_territories <- territories_full_info %>% select("state.x", "transaction_amt", "cmte_party_affiliation", "ge_winner") %>% na.omit(snipped_territories)
+
+#Here we selected for 4 columns in order to prepare for a ggplot
 ```
 
 ```{r}
